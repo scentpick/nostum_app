@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -25,16 +25,34 @@ export function HelloWave() {
   }));
 
   return (
-    <Animated.View style={animatedStyle}>
-      <ThemedText style={styles.text}>👋</ThemedText>
-    </Animated.View>
+    <View style={styles.container}>
+      <Animated.View style={animatedStyle}>
+        <ThemedText style={styles.emoji}>👋</ThemedText>
+      </Animated.View>
+      <ThemedText style={styles.greeting}>안녕하세요!</ThemedText>
+      <ThemedText style={styles.subtitle}>환영합니다</ThemedText>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emoji: {
     fontSize: 28,
     lineHeight: 32,
     marginTop: -6,
+  },
+  greeting: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 8,
+  },
+  subtitle: {
+    fontSize: 16,
+    opacity: 0.7,
+    marginTop: 4,
   },
 });
