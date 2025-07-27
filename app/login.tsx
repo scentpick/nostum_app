@@ -51,7 +51,6 @@ export default function LoginScreen() {
         <ThemedView style={styles.container}>
           {/* Header */}
           <ThemedView style={styles.header}>
-            <ThemedText style={styles.logo}>🌱</ThemedText>
             <ThemedText style={styles.title}>환영합니다</ThemedText>
             <ThemedText style={styles.subtitle}>
               계정에 로그인하여 모든 기능을 이용해보세요
@@ -146,7 +145,7 @@ const styles = createStyles({
   container: {
     flex: 1,
     padding: spacing.lg,
-    paddingTop: spacing.xxl,
+    paddingTop: 90,
   },
   header: {
     alignItems: 'center',
@@ -158,7 +157,7 @@ const styles = createStyles({
   },
   title: {
     ...text.title,
-    fontSize: fontSize.xxxl,
+    fontSize: fontSize.xxl,
     marginBottom: spacing.sm,
   },
   subtitle: {

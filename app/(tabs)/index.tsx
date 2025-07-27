@@ -56,7 +56,7 @@ export default function HomeScreen() {
           ))}
         </ThemedView>
 
-        {/* Bottom Spacing */}
+        {/* Bottom Spacing for Tab Bar */}
         <ThemedView style={styles.bottomSpacing} />
       </ScrollView>
     </ThemedView>
@@ -119,6 +119,6 @@ const styles = createStyles({
     marginTop: spacing.xs,
   },
   bottomSpacing: {
-    height: spacing.xl,
+    height: spacing.xxl + spacing.lg, // 탭 바 높이 + 추가 여백
   },
 });

@@ -1,4 +1,6 @@
 
+import { Image } from 'expo-image';
+
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { colors, createStyles, fontSize, spacing, text } from '@/utils/styles';
@@ -18,7 +20,11 @@ export function Header({ title = 'Nostum', showBackButton = false, onBackPress }
         </ThemedView>
       )}
       <ThemedView style={styles.titleContainer}>
-        <ThemedText style={styles.logo}>🌱</ThemedText>
+        <Image
+          source={require('@/assets/images/nostum_logo.webp')}
+          style={styles.logo}
+          contentFit="contain"
+        />
         <ThemedText style={styles.title}>{title}</ThemedText>
       </ThemedView>
       <ThemedView style={styles.rightContainer}>
@@ -35,7 +41,7 @@ const styles = createStyles({
     justifyContent: 'space-between',
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
-    paddingTop: spacing.xl,
+    paddingTop: spacing.xxl + spacing.md, // 더 큰 상단 마진
     borderBottomWidth: 1,
     borderBottomColor: colors.textSecondary,
     opacity: 0.1,
@@ -59,7 +65,8 @@ const styles = createStyles({
     alignItems: 'center',
   },
   logo: {
-    fontSize: fontSize.lg,
+    width: 24,
+    height: 24,
     marginRight: spacing.sm,
   },
   title: {

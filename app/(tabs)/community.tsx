@@ -111,7 +111,7 @@ export default function CommunityScreen() {
           </ThemedView>
         </ThemedView>
 
-        {/* Bottom Spacing */}
+        {/* Bottom Spacing for Tab Bar */}
         <ThemedView style={styles.bottomSpacing} />
       </ScrollView>
 
@@ -139,7 +139,7 @@ const styles = createStyles({
   postHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.md,
+    marginBottom: spacing.lg,
   },
   postInfo: {
     flex: 1,
@@ -170,11 +170,11 @@ const styles = createStyles({
     marginLeft: spacing.xs,
   },
   bottomSpacing: {
-    height: spacing.xl,
+    height: spacing.xxl + spacing.lg, // 탭 바 높이 + 추가 여백
   },
   fab: {
     position: 'absolute',
-    bottom: spacing.xl,
+    bottom: spacing.xxl + spacing.lg, // 탭 바 위에 위치하도록 조정
     right: spacing.lg,
     width: 56,
     height: 56,

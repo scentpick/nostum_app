@@ -63,7 +63,7 @@ export default function ChatbotScreen() {
           </ThemedView>
         </ThemedView>
 
-        {/* Bottom Spacing */}
+        {/* Bottom Spacing for Tab Bar */}
         <ThemedView style={styles.bottomSpacing} />
       </ScrollView>
 
@@ -127,7 +127,7 @@ const styles = createStyles({
     marginLeft: spacing.xs,
   },
   bottomSpacing: {
-    height: spacing.xl,
+    height: spacing.xxl + spacing.lg, // 탭 바 높이 + 추가 여백
   },
   inputContainer: {
     flexDirection: 'row',
