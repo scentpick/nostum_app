@@ -1,80 +1,124 @@
-import { Image } from "expo-image";
-import { Platform, StyleSheet } from "react-native";
+import { ScrollView } from 'react-native';
 
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedView } from '@/components/ThemedView';
+import { Header } from '@/components/ui/Header';
+import { Skeleton } from '@/components/ui/Skeleton';
+import { createStyles, spacing } from '@/utils/styles';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <ThemedView style={styles.container}>
+      <Header title="Nostum" />
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        {/* Hero Banner */}
+        <ThemedView style={styles.heroSection}>
+          <Skeleton width="100%" height={200} borderRadius={12} />
+        </ThemedView>
+
+        {/* Quick Actions */}
+        <ThemedView style={styles.section}>
+          <Skeleton width={120} height={24} style={styles.sectionTitle} />
+          <ThemedView style={styles.quickActions}>
+            {[1, 2, 3, 4].map((item) => (
+              <ThemedView key={item} style={styles.actionCard}>
+                <Skeleton width={40} height={40} borderRadius={20} />
+                <Skeleton width={60} height={16} style={styles.actionText} />
+              </ThemedView>
+            ))}
+          </ThemedView>
+        </ThemedView>
+
+        {/* Featured Content */}
+        <ThemedView style={styles.section}>
+          <Skeleton width={150} height={24} style={styles.sectionTitle} />
+          <ThemedView style={styles.featuredGrid}>
+            {[1, 2].map((item) => (
+              <ThemedView key={item} style={styles.featuredCard}>
+                <Skeleton width="100%" height={120} borderRadius={8} />
+                <Skeleton width="80%" height={18} style={styles.cardTitle} />
+                <Skeleton width="60%" height={14} style={styles.cardSubtitle} />
+              </ThemedView>
+            ))}
+          </ThemedView>
+        </ThemedView>
+
+        {/* Recent Items */}
+        <ThemedView style={styles.section}>
+          <Skeleton width={120} height={24} style={styles.sectionTitle} />
+          {[1, 2, 3].map((item) => (
+            <ThemedView key={item} style={styles.listItem}>
+              <Skeleton width={60} height={60} borderRadius={8} />
+              <ThemedView style={styles.listItemContent}>
+                <Skeleton width="70%" height={18} />
+                <Skeleton width="50%" height={14} style={styles.listItemSubtitle} />
+              </ThemedView>
+            </ThemedView>
+          ))}
+        </ThemedView>
+
+        {/* Bottom Spacing */}
+        <ThemedView style={styles.bottomSpacing} />
+      </ScrollView>
+    </ThemedView>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
+const styles = createStyles({
+  container: {
+    flex: 1,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  scrollView: {
+    flex: 1,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 1,
-    position: "absolute",
+  heroSection: {
+    padding: spacing.lg,
+  },
+  section: {
+    paddingHorizontal: spacing.lg,
+    marginBottom: spacing.xl,
+  },
+  sectionTitle: {
+    marginBottom: spacing.md,
+  },
+  quickActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: spacing.md,
+  },
+  actionCard: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  actionText: {
+    marginTop: spacing.sm,
+  },
+  featuredGrid: {
+    flexDirection: 'row',
+    gap: spacing.md,
+    marginTop: spacing.md,
+  },
+  featuredCard: {
+    flex: 1,
+  },
+  cardTitle: {
+    marginTop: spacing.sm,
+  },
+  cardSubtitle: {
+    marginTop: spacing.xs,
+  },
+  listItem: {
+    flexDirection: 'row',
+    marginBottom: spacing.md,
+    alignItems: 'center',
+  },
+  listItemContent: {
+    flex: 1,
+    marginLeft: spacing.md,
+  },
+  listItemSubtitle: {
+    marginTop: spacing.xs,
+  },
+  bottomSpacing: {
+    height: spacing.xl,
   },
 });
