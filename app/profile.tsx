@@ -127,6 +127,8 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E1E1E1',
   },
   headerTitle: {
+    fontSize: 24,
+    fontWeight: '700',
     color: '#000000',
   },
   content: {
