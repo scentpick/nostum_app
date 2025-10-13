@@ -101,8 +101,8 @@ updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 CREATE TABLE profiles (
   id UUID REFERENCES auth.users(id) PRIMARY KEY,
   nickname TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE,  -- auth.users의 email 자동 동기화 (트리거)
   avatar_url TEXT,
-  google_id TEXT UNIQUE,
   role VARCHAR(20) DEFAULT 'user',
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
